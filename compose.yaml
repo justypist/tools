@@ -1,21 +1,9 @@
 services:
-  daily-tools:
-    image: ${IMAGE_NAME:-daily-tools:local}
+  tools:
+    image: ${IMAGE_NAME:-tools:local}
     build:
       context: .
-    container_name: daily-tools
+    container_name: tools
     restart: unless-stopped
     ports:
       - "${APP_PORT:-8080}:80"
-
-  watchtower:
-    image: containrrr/watchtower:latest
-    container_name: watchtower
-    restart: unless-stopped
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-    command:
-      - "--interval"
-      - "60"
-      - "--cleanup"
-      - "daily-tools"
