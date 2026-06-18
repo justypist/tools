@@ -13,7 +13,7 @@
         document.documentElement.dataset.themePreference = preference;
       })();
     </script>
-    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./styles/app.css" />
   </head>
   <body>
     <div class="app-shell">
@@ -225,6 +225,16 @@
     </div>
 
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
-    <script src="./app.js" defer></script>
+    <script src="./core/dom.js" defer></script>
+    <script src="./core/feedback.js" defer></script>
+    <script src="./core/theme.js" defer></script>
+    <script src="./core/navigation.js" defer></script>
+    <script src="./core/clock.js" defer></script>
+    <script src="./features/json/jsonTool.js" defer></script>
+    <script src="./features/url/urlTool.js" defer></script>
+    <script src="./features/time/timeTool.js" defer></script>
+    <script src="./features/uuid/uuidTool.js" defer></script>
+    <script src="./features/password/passwordTool.js" defer></script>
+    <script src="./main.js" defer></script>
   </body>
 </html>

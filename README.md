@@ -4,7 +4,7 @@
 
 ## 本地预览
 
-直接打开 `index.html`，或使用 Docker Compose：
+直接打开 `src/index.html`，或使用 Docker Compose：
 
 ```bash
 docker compose up --build
