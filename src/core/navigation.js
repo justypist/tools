@@ -9,6 +9,7 @@
     time: "时间戳转换",
     uuid: "UUID 生成",
     password: "密码生成",
+    currency: "汇率转换",
   };
 
   function initNavigation() {

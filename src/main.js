@@ -4,6 +4,7 @@
   document.addEventListener("DOMContentLoaded", () => {
     const {
       initClock,
+      initCurrencyTool,
       initJsonTool,
       initNavigation,
       initPasswordTool,
@@ -21,5 +22,6 @@
     initTimeTool();
     initUuidTool();
     initPasswordTool();
+    initCurrencyTool();
   });
 })();

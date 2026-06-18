@@ -644,6 +644,64 @@ input[type="checkbox"] {
   min-height: auto;
 }
 
+.currency-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+}
+
+.currency-card {
+  display: grid;
+  gap: 10px;
+  min-width: 0;
+  border: 1px solid var(--border);
+  background: var(--surface-muted);
+  padding: 12px;
+}
+
+.currency-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  min-width: 0;
+}
+
+.currency-title {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.currency-title strong {
+  font-family: var(--mono);
+  font-size: 18px;
+  line-height: 1.2;
+}
+
+.currency-title span,
+.currency-ratio {
+  color: var(--text-muted);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.currency-amount {
+  min-height: 44px;
+  background: var(--surface);
+  font-family: var(--mono);
+  font-size: 18px;
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  text-align: right;
+}
+
+.currency-ratio {
+  min-height: 20px;
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
 .toast {
   position: fixed;
   right: 18px;

@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>开发者速算台</title>
-    <meta name="description" content="JSON、URL、时间戳、UUID 和密码生成工具" />
+    <meta name="description" content="JSON、URL、时间戳、UUID、密码生成和汇率转换工具" />
     <script>
       (() => {
         const preference = localStorage.getItem("theme-preference") || "system";
@@ -41,6 +41,9 @@
           </button>
           <button class="nav-item" type="button" data-tool="password">
             <span>密码</span>
+          </button>
+          <button class="nav-item" type="button" data-tool="currency">
+            <span>汇率</span>
           </button>
         </nav>
       </aside>
@@ -221,6 +224,19 @@
           </div>
           <p class="status" id="passwordStatus" role="status">等待生成</p>
         </section>
+
+        <section class="tool-panel" id="currencyPanel" data-panel="currency" aria-labelledby="currencyTitle">
+          <div class="panel-heading">
+            <h3 id="currencyTitle">汇率转换</h3>
+            <div class="actions">
+              <button class="action-button primary" type="button" id="currencyRefresh">
+                <span>上次更新：-</span>
+              </button>
+            </div>
+          </div>
+          <div class="currency-grid" id="currencyGrid" aria-live="polite"></div>
+          <p class="status" id="currencyStatus" role="status">等待载入汇率</p>
+        </section>
       </main>
     </div>
 
@@ -235,6 +251,7 @@
     <script src="./features/time/timeTool.js" defer></script>
     <script src="./features/uuid/uuidTool.js" defer></script>
     <script src="./features/password/passwordTool.js" defer></script>
+    <script src="./features/currency/currencyTool.js" defer></script>
     <script src="./main.js" defer></script>
   </body>
 </html>

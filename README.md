@@ -1,6 +1,6 @@
 # 开发者速算台
 
-一个纯 HTML/CSS/JavaScript 的静态小工具网站，包含 JSON 格式化、URL 编解码、时间戳转换、UUID 生成和密码生成。生产环境使用 nginx 容器托管。
+一个纯 HTML/CSS/JavaScript 的静态小工具网站，包含 JSON 格式化、URL 编解码、时间戳转换、UUID 生成、密码生成和汇率转换。生产环境使用 nginx 容器托管。
 
 ## 本地预览
 
