@@ -1,0 +1,11 @@
+{
+  "name": "tools",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "serve src -l 3000 --no-clipboard"
+  },
+  "devDependencies": {
+    "serve": "^14.2.4"
+  }
+}
