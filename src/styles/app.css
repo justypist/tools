@@ -313,29 +313,47 @@ textarea:disabled {
 }
 
 .clock {
-  min-width: 132px;
+  display: flex;
+  align-items: stretch;
+  min-width: 288px;
+  min-height: 42px;
   border: 1px solid var(--border);
   background: var(--surface);
-  padding: 8px 10px;
+  padding: 0;
   text-align: right;
 }
 
-.clock span,
-.clock small {
+.clock-item {
+  display: grid;
+  place-content: center;
+  flex: 1 1 0;
+  min-width: 0;
+  padding: 3px 10px;
+}
+
+.clock-item + .clock-item {
+  border-left: 1px solid var(--border);
+}
+
+.clock-item span,
+.clock-item small {
   display: block;
 }
 
-.clock span {
+.clock-item span {
   font-family: var(--mono);
   font-size: 15px;
+  line-height: 1.1;
   font-variant-numeric: tabular-nums;
   font-weight: 700;
 }
 
-.clock small {
-  margin-top: 2px;
+.clock-item small {
+  margin-top: 1px;
   color: var(--text-muted);
   font-size: 12px;
+  line-height: 1.1;
+  white-space: nowrap;
 }
 
 .tool-panel {

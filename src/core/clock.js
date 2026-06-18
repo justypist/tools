@@ -4,17 +4,36 @@
   const { $ } = window.DailyTools;
 
   function initClock() {
-    const target = $("#currentTime");
-    const formatter = new Intl.DateTimeFormat("zh-CN", {
-      hour: "2-digit",
-      minute: "2-digit",
-      second: "2-digit",
-      hour12: false,
-      timeZone: "Asia/Shanghai",
-    });
+    const clocks = [
+      {
+        target: $("#currentTime"),
+        formatter: new Intl.DateTimeFormat("zh-CN", {
+          hour: "2-digit",
+          minute: "2-digit",
+          second: "2-digit",
+          hour12: false,
+          timeZone: "Asia/Shanghai",
+        }),
+      },
+      {
+        target: $("#usTime"),
+        formatter: new Intl.DateTimeFormat("zh-CN", {
+          hour: "2-digit",
+          minute: "2-digit",
+          second: "2-digit",
+          hour12: false,
+          timeZone: "America/New_York",
+        }),
+      },
+    ];
 
     const tick = () => {
-      target.textContent = formatter.format(new Date());
+      const now = new Date();
+      clocks.forEach(({ target, formatter }) => {
+        if (target) {
+          target.textContent = formatter.format(now);
+        }
+      });
     };
 
     tick();
