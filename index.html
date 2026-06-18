@@ -5,38 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>开发者速算台</title>
     <meta name="description" content="JSON、URL、时间戳、UUID 和密码生成工具" />
+    <script>
+      (() => {
+        const preference = localStorage.getItem("theme-preference") || "system";
+        const systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        document.documentElement.dataset.theme = preference === "system" ? (systemDark ? "dark" : "light") : preference;
+        document.documentElement.dataset.themePreference = preference;
+      })();
+    </script>
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
     <div class="app-shell">
       <aside class="sidebar" aria-label="工具导航">
         <div class="brand">
-          <span class="brand-mark" aria-hidden="true">DT</span>
+          <span class="brand-mark" aria-hidden="true">工</span>
           <div>
             <h1>开发者速算台</h1>
-            <p>Daily Tools</p>
+            <p>本地小工具</p>
           </div>
         </div>
 
         <nav class="tool-nav" aria-label="工具列表">
           <button class="nav-item active" type="button" data-tool="json">
-            <span class="nav-icon" aria-hidden="true">{} </span>
             <span>JSON</span>
           </button>
           <button class="nav-item" type="button" data-tool="url">
-            <span class="nav-icon" aria-hidden="true">%</span>
             <span>URL</span>
           </button>
           <button class="nav-item" type="button" data-tool="time">
-            <span class="nav-icon" aria-hidden="true">T</span>
             <span>时间戳</span>
           </button>
           <button class="nav-item" type="button" data-tool="uuid">
-            <span class="nav-icon" aria-hidden="true">#</span>
             <span>UUID</span>
           </button>
           <button class="nav-item" type="button" data-tool="password">
-            <span class="nav-icon" aria-hidden="true">*</span>
             <span>密码</span>
           </button>
         </nav>
@@ -45,12 +48,29 @@
       <main class="workspace">
         <header class="topbar">
           <div>
-            <p class="eyebrow">Toolkit</p>
+            <p class="eyebrow">工具集</p>
             <h2 id="toolTitle">JSON 格式化</h2>
           </div>
-          <div class="clock" aria-label="当前时间">
-            <span id="currentTime">--:--:--</span>
-            <small>Asia/Shanghai</small>
+          <div class="topbar-controls">
+            <fieldset class="theme-switcher" aria-label="主题设置">
+              <legend>主题</legend>
+              <label>
+                <input type="radio" name="theme" value="system" checked />
+                <span>跟随系统</span>
+              </label>
+              <label>
+                <input type="radio" name="theme" value="light" />
+                <span>浅色</span>
+              </label>
+              <label>
+                <input type="radio" name="theme" value="dark" />
+                <span>深色</span>
+              </label>
+            </fieldset>
+            <div class="clock" aria-label="当前时间">
+              <span id="currentTime">--:--:--</span>
+              <small>北京时间</small>
+            </div>
           </div>
         </header>
 
@@ -58,17 +78,17 @@
           <div class="panel-heading">
             <h3 id="jsonTitle">JSON 格式化</h3>
             <div class="actions">
-              <button class="icon-button" type="button" id="jsonFormat" title="格式化" aria-label="格式化 JSON">
-                <span aria-hidden="true">F</span>
+              <button class="action-button primary" type="button" id="jsonFormat">
+                <span>格式化 JSON</span>
               </button>
-              <button class="icon-button" type="button" id="jsonMinify" title="压缩" aria-label="压缩 JSON">
-                <span aria-hidden="true">M</span>
+              <button class="action-button" type="button" id="jsonMinify">
+                <span>压缩 JSON</span>
               </button>
-              <button class="icon-button" type="button" id="jsonCopy" title="复制" aria-label="复制 JSON 输出">
-                <span aria-hidden="true">C</span>
+              <button class="action-button" type="button" id="jsonCopy">
+                <span>复制输出</span>
               </button>
-              <button class="icon-button" type="button" id="jsonClear" title="清空" aria-label="清空 JSON">
-                <span aria-hidden="true">X</span>
+              <button class="action-button" type="button" id="jsonClear">
+                <span>清空输入</span>
               </button>
             </div>
           </div>
@@ -89,14 +109,14 @@
           <div class="panel-heading">
             <h3 id="urlTitle">URL 编解码</h3>
             <div class="actions">
-              <button class="icon-button" type="button" id="urlEncode" title="编码" aria-label="URL 编码">
-                <span aria-hidden="true">E</span>
+              <button class="action-button primary" type="button" id="urlEncode">
+                <span>URL 编码</span>
               </button>
-              <button class="icon-button" type="button" id="urlDecode" title="解码" aria-label="URL 解码">
-                <span aria-hidden="true">D</span>
+              <button class="action-button" type="button" id="urlDecode">
+                <span>URL 解码</span>
               </button>
-              <button class="icon-button" type="button" id="urlCopy" title="复制" aria-label="复制 URL 输出">
-                <span aria-hidden="true">C</span>
+              <button class="action-button" type="button" id="urlCopy">
+                <span>复制输出</span>
               </button>
             </div>
           </div>
@@ -117,11 +137,11 @@
           <div class="panel-heading">
             <h3 id="timeTitle">时间戳转换</h3>
             <div class="actions">
-              <button class="icon-button" type="button" id="timeNow" title="现在" aria-label="填入当前时间">
-                <span aria-hidden="true">N</span>
+              <button class="action-button primary" type="button" id="timeNow">
+                <span>使用当前时间</span>
               </button>
-              <button class="icon-button" type="button" id="timeCopy" title="复制" aria-label="复制时间结果">
-                <span aria-hidden="true">C</span>
+              <button class="action-button" type="button" id="timeCopy">
+                <span>复制结果</span>
               </button>
             </div>
           </div>
@@ -150,11 +170,11 @@
           <div class="panel-heading">
             <h3 id="uuidTitle">UUID 生成</h3>
             <div class="actions">
-              <button class="icon-button" type="button" id="uuidGenerate" title="生成" aria-label="生成 UUID">
-                <span aria-hidden="true">G</span>
+              <button class="action-button primary" type="button" id="uuidGenerate">
+                <span>生成 UUID</span>
               </button>
-              <button class="icon-button" type="button" id="uuidCopy" title="复制" aria-label="复制 UUID">
-                <span aria-hidden="true">C</span>
+              <button class="action-button" type="button" id="uuidCopy">
+                <span>复制全部</span>
               </button>
             </div>
           </div>
@@ -166,11 +186,11 @@
           <div class="panel-heading">
             <h3 id="passwordTitle">密码生成</h3>
             <div class="actions">
-              <button class="icon-button" type="button" id="passwordGenerate" title="生成" aria-label="生成密码">
-                <span aria-hidden="true">G</span>
+              <button class="action-button primary" type="button" id="passwordGenerate">
+                <span>生成密码</span>
               </button>
-              <button class="icon-button" type="button" id="passwordCopy" title="复制" aria-label="复制密码">
-                <span aria-hidden="true">C</span>
+              <button class="action-button" type="button" id="passwordCopy">
+                <span>复制密码</span>
               </button>
             </div>
           </div>
