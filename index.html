@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>开发者速算台</title>
+    <meta name="description" content="JSON、URL、时间戳、UUID 和密码生成工具" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="工具导航">
+        <div class="brand">
+          <span class="brand-mark" aria-hidden="true">DT</span>
+          <div>
+            <h1>开发者速算台</h1>
+            <p>Daily Tools</p>
+          </div>
+        </div>
+
+        <nav class="tool-nav" aria-label="工具列表">
+          <button class="nav-item active" type="button" data-tool="json">
+            <span class="nav-icon" aria-hidden="true">{} </span>
+            <span>JSON</span>
+          </button>
+          <button class="nav-item" type="button" data-tool="url">
+            <span class="nav-icon" aria-hidden="true">%</span>
+            <span>URL</span>
+          </button>
+          <button class="nav-item" type="button" data-tool="time">
+            <span class="nav-icon" aria-hidden="true">T</span>
+            <span>时间戳</span>
+          </button>
+          <button class="nav-item" type="button" data-tool="uuid">
+            <span class="nav-icon" aria-hidden="true">#</span>
+            <span>UUID</span>
+          </button>
+          <button class="nav-item" type="button" data-tool="password">
+            <span class="nav-icon" aria-hidden="true">*</span>
+            <span>密码</span>
+          </button>
+        </nav>
+      </aside>
+
+      <main class="workspace">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Toolkit</p>
+            <h2 id="toolTitle">JSON 格式化</h2>
+          </div>
+          <div class="clock" aria-label="当前时间">
+            <span id="currentTime">--:--:--</span>
+            <small>Asia/Shanghai</small>
+          </div>
+        </header>
+
+        <section class="tool-panel active" id="jsonPanel" data-panel="json" aria-labelledby="jsonTitle">
+          <div class="panel-heading">
+            <h3 id="jsonTitle">JSON 格式化</h3>
+            <div class="actions">
+              <button class="icon-button" type="button" id="jsonFormat" title="格式化" aria-label="格式化 JSON">
+                <span aria-hidden="true">F</span>
+              </button>
+              <button class="icon-button" type="button" id="jsonMinify" title="压缩" aria-label="压缩 JSON">
+                <span aria-hidden="true">M</span>
+              </button>
+              <button class="icon-button" type="button" id="jsonCopy" title="复制" aria-label="复制 JSON 输出">
+                <span aria-hidden="true">C</span>
+              </button>
+              <button class="icon-button" type="button" id="jsonClear" title="清空" aria-label="清空 JSON">
+                <span aria-hidden="true">X</span>
+              </button>
+            </div>
+          </div>
+          <div class="split-grid">
+            <label class="field-block">
+              <span>输入</span>
+              <textarea id="jsonInput" spellcheck="false">{ "name": "daily-tools", "ready": true, "items": [1, 2, 3] }</textarea>
+            </label>
+            <label class="field-block">
+              <span>输出</span>
+              <textarea id="jsonOutput" spellcheck="false" readonly></textarea>
+            </label>
+          </div>
+          <p class="status" id="jsonStatus" role="status">等待处理</p>
+        </section>
+
+        <section class="tool-panel" id="urlPanel" data-panel="url" aria-labelledby="urlTitle">
+          <div class="panel-heading">
+            <h3 id="urlTitle">URL 编解码</h3>
+            <div class="actions">
+              <button class="icon-button" type="button" id="urlEncode" title="编码" aria-label="URL 编码">
+                <span aria-hidden="true">E</span>
+              </button>
+              <button class="icon-button" type="button" id="urlDecode" title="解码" aria-label="URL 解码">
+                <span aria-hidden="true">D</span>
+              </button>
+              <button class="icon-button" type="button" id="urlCopy" title="复制" aria-label="复制 URL 输出">
+                <span aria-hidden="true">C</span>
+              </button>
+            </div>
+          </div>
+          <div class="split-grid">
+            <label class="field-block">
+              <span>输入</span>
+              <textarea id="urlInput" spellcheck="false">https://example.com/search?q=开发者工具&sort=recent</textarea>
+            </label>
+            <label class="field-block">
+              <span>输出</span>
+              <textarea id="urlOutput" spellcheck="false" readonly></textarea>
+            </label>
+          </div>
+          <p class="status" id="urlStatus" role="status">等待处理</p>
+        </section>
+
+        <section class="tool-panel" id="timePanel" data-panel="time" aria-labelledby="timeTitle">
+          <div class="panel-heading">
+            <h3 id="timeTitle">时间戳转换</h3>
+            <div class="actions">
+              <button class="icon-button" type="button" id="timeNow" title="现在" aria-label="填入当前时间">
+                <span aria-hidden="true">N</span>
+              </button>
+              <button class="icon-button" type="button" id="timeCopy" title="复制" aria-label="复制时间结果">
+                <span aria-hidden="true">C</span>
+              </button>
+            </div>
+          </div>
+          <div class="time-grid">
+            <label class="input-row">
+              <span>Unix 秒</span>
+              <input id="unixSeconds" inputmode="numeric" autocomplete="off" />
+            </label>
+            <label class="input-row">
+              <span>Unix 毫秒</span>
+              <input id="unixMillis" inputmode="numeric" autocomplete="off" />
+            </label>
+            <label class="input-row">
+              <span>本地时间</span>
+              <input id="localTime" type="datetime-local" step="1" />
+            </label>
+            <div class="result-strip" aria-live="polite">
+              <span>ISO</span>
+              <strong id="isoTime">-</strong>
+            </div>
+          </div>
+          <p class="status" id="timeStatus" role="status">等待处理</p>
+        </section>
+
+        <section class="tool-panel" id="uuidPanel" data-panel="uuid" aria-labelledby="uuidTitle">
+          <div class="panel-heading">
+            <h3 id="uuidTitle">UUID 生成</h3>
+            <div class="actions">
+              <button class="icon-button" type="button" id="uuidGenerate" title="生成" aria-label="生成 UUID">
+                <span aria-hidden="true">G</span>
+              </button>
+              <button class="icon-button" type="button" id="uuidCopy" title="复制" aria-label="复制 UUID">
+                <span aria-hidden="true">C</span>
+              </button>
+            </div>
+          </div>
+          <div class="uuid-list" id="uuidList" aria-live="polite"></div>
+          <p class="status" id="uuidStatus" role="status">等待生成</p>
+        </section>
+
+        <section class="tool-panel" id="passwordPanel" data-panel="password" aria-labelledby="passwordTitle">
+          <div class="panel-heading">
+            <h3 id="passwordTitle">密码生成</h3>
+            <div class="actions">
+              <button class="icon-button" type="button" id="passwordGenerate" title="生成" aria-label="生成密码">
+                <span aria-hidden="true">G</span>
+              </button>
+              <button class="icon-button" type="button" id="passwordCopy" title="复制" aria-label="复制密码">
+                <span aria-hidden="true">C</span>
+              </button>
+            </div>
+          </div>
+          <div class="password-layout">
+            <div class="password-output">
+              <span>结果</span>
+              <strong id="passwordValue">-</strong>
+            </div>
+            <div class="controls-grid">
+              <label class="range-row">
+                <span>长度</span>
+                <input id="passwordLength" type="range" min="8" max="64" value="20" />
+                <output id="passwordLengthValue">20</output>
+              </label>
+              <label class="check-row">
+                <input id="useUppercase" type="checkbox" checked />
+                <span>大写字母</span>
+              </label>
+              <label class="check-row">
+                <input id="useNumbers" type="checkbox" checked />
+                <span>数字</span>
+              </label>
+              <label class="check-row">
+                <input id="useSymbols" type="checkbox" checked />
+                <span>符号</span>
+              </label>
+            </div>
+          </div>
+          <p class="status" id="passwordStatus" role="status">等待生成</p>
+        </section>
+      </main>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="./app.js" defer></script>
+  </body>
+</html>

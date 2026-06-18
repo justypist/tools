@@ -1,0 +1,9 @@
+services:
+  daily-tools:
+    image: ${IMAGE_NAME:-daily-tools:local}
+    build:
+      context: .
+    container_name: daily-tools
+    restart: unless-stopped
+    ports:
+      - "${APP_PORT:-8080}:80"
