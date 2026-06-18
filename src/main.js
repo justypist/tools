@@ -12,7 +12,7 @@
       initTimeTool,
       initUrlTool,
       initUuidTool,
-    } = window.DailyTools;
+    } = window.ToolboxApp;
 
     initTheme();
     initNavigation();

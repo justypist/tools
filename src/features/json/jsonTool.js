@@ -1,7 +1,7 @@
 (() => {
   "use strict";
 
-  const { $, copyText, setStatus } = window.DailyTools;
+  const { $, copyText, setStatus } = window.ToolboxApp;
 
   function initJsonTool() {
     const input = $("#jsonInput");
@@ -32,7 +32,7 @@
     transform("format");
   }
 
-  Object.assign(window.DailyTools, {
+  Object.assign(window.ToolboxApp, {
     initJsonTool,
   });
 })();

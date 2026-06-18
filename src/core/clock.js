@@ -1,7 +1,7 @@
 (() => {
   "use strict";
 
-  const { $ } = window.DailyTools;
+  const { $ } = window.ToolboxApp;
 
   function initClock() {
     const clocks = [
@@ -40,7 +40,7 @@
     setInterval(tick, 1000);
   }
 
-  Object.assign(window.DailyTools, {
+  Object.assign(window.ToolboxApp, {
     initClock,
   });
 })();

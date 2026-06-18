@@ -1,7 +1,7 @@
 (() => {
   "use strict";
 
-  const { $, $$, setStatus } = window.DailyTools;
+  const { $, $$, setStatus } = window.ToolboxApp;
 
   const RATE_CACHE_KEY = "currency-rates-usd-v1";
   const RATE_CACHE_TTL_HOURS = 6;
@@ -295,7 +295,7 @@
     refreshTimer = setInterval(() => refreshRates(), REFRESH_INTERVAL_MS);
   }
 
-  Object.assign(window.DailyTools, {
+  Object.assign(window.ToolboxApp, {
     initCurrencyTool,
     refreshRates,
   });

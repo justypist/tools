@@ -1,7 +1,7 @@
 (() => {
   "use strict";
 
-  const { $, $$, copyText, setStatus } = window.DailyTools;
+  const { $, $$, copyText, setStatus } = window.ToolboxApp;
 
   function createUuid() {
     if (crypto.randomUUID) {
@@ -59,7 +59,7 @@
     render();
   }
 
-  Object.assign(window.DailyTools, {
+  Object.assign(window.ToolboxApp, {
     createUuid,
     initUuidTool,
   });

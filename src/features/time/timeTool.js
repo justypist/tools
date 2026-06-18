@@ -1,7 +1,7 @@
 (() => {
   "use strict";
 
-  const { $, copyText, setStatus } = window.DailyTools;
+  const { $, copyText, setStatus } = window.ToolboxApp;
 
   function toDateTimeLocalValue(date) {
     const offset = date.getTimezoneOffset() * 60000;
@@ -64,7 +64,7 @@
     updateTimeFields(new Date(), "当前时间");
   }
 
-  Object.assign(window.DailyTools, {
+  Object.assign(window.ToolboxApp, {
     initTimeTool,
     toDateTimeLocalValue,
     updateTimeFields,

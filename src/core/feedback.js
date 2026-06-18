@@ -1,7 +1,7 @@
 (() => {
   "use strict";
 
-  const { $ } = window.DailyTools;
+  const { $ } = window.ToolboxApp;
   let toastTimer;
 
   function setStatus(element, message, type = "") {
@@ -42,7 +42,7 @@
     }
   }
 
-  Object.assign(window.DailyTools, {
+  Object.assign(window.ToolboxApp, {
     copyText,
     setStatus,
     showToast,

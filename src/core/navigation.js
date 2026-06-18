@@ -1,7 +1,7 @@
 (() => {
   "use strict";
 
-  const { $, $$ } = window.DailyTools;
+  const { $, $$ } = window.ToolboxApp;
 
   const toolTitles = {
     json: "JSON 格式化",
@@ -34,7 +34,7 @@
     });
   }
 
-  Object.assign(window.DailyTools, {
+  Object.assign(window.ToolboxApp, {
     initNavigation,
     toolTitles,
   });

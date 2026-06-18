@@ -1,7 +1,7 @@
 (() => {
   "use strict";
 
-  const { $$ } = window.DailyTools;
+  const { $$ } = window.ToolboxApp;
   const themeQuery = window.matchMedia("(prefers-color-scheme: dark)");
 
   function resolveTheme(preference) {
@@ -42,7 +42,7 @@
     });
   }
 
-  Object.assign(window.DailyTools, {
+  Object.assign(window.ToolboxApp, {
     applyTheme,
     initTheme,
     resolveTheme,

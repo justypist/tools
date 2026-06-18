@@ -1,7 +1,7 @@
 (() => {
   "use strict";
 
-  const { $, $$, copyText, setStatus } = window.DailyTools;
+  const { $, $$, copyText, setStatus } = window.ToolboxApp;
 
   function getRandomInt(max) {
     const array = new Uint32Array(1);
@@ -68,7 +68,7 @@
     generate();
   }
 
-  Object.assign(window.DailyTools, {
+  Object.assign(window.ToolboxApp, {
     createPassword,
     getRandomInt,
     initPasswordTool,

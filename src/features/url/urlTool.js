@@ -1,7 +1,7 @@
 (() => {
   "use strict";
 
-  const { $, copyText, setStatus } = window.DailyTools;
+  const { $, copyText, setStatus } = window.ToolboxApp;
 
   function initUrlTool() {
     const input = $("#urlInput");
@@ -28,7 +28,7 @@
     setStatus(status, "URL 已编码", "success");
   }
 
-  Object.assign(window.DailyTools, {
+  Object.assign(window.ToolboxApp, {
     initUrlTool,
   });
 })();
